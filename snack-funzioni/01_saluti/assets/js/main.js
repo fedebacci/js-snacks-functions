@@ -7,12 +7,11 @@ const userName = 'Mario';
 /**
  * Funzione per salutare un utente
  * @param {string} name default = Giovanni - Il nome dell'utente da salutare
- * @returns {string}
+ * @returns Messaggio di saluto da stampare in console o mostrare come alert
  */
 const greetUser = (name = "Giovanni") => `Ciao ${name}`;
 
 // Invoca la funzione qui e stampa il risultato in console
-// console.log("Saluto l'utente di default:", greetUser());
 console.log(`Saluto l'utente di default: 
 ${greetUser()}
 `);
