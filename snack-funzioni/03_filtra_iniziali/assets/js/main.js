@@ -34,7 +34,7 @@ function filterByInitials (namesList = [], searchedInitial = "A") {
 console.log("filterByInitials () con valori di default", filterByInitials ());
 console.log("filterByInitials (names, searchedChar)",  filterByInitials (names, searchedChar));
 console.log("filterByInitials (['Anna', 'Francesco'], 'B')", filterByInitials (['Anna', 'Francesco'], 'B'));
-// * TODO modificare per accettare anche numeri
+// * TODO modificare per accettare anche altri valori (Come per es 2)
 // console.log("filterByInitials ([2025, 1999], 1)", filterByInitials ([2025, 1999], 1));
 
 
