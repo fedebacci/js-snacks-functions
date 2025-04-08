@@ -4,11 +4,21 @@ const userName = 'Mario';
 
 
 // Dichiara la funzione qui.
-const greetUser = (name) => `Ciao ${name}`;
+/**
+ * Funzione per salutare un utente
+ * @param {string} name default = Giovanni - Il nome dell'utente da salutare
+ * @returns {string}
+ */
+const greetUser = (name = "Giovanni") => `Ciao ${name}`;
 
 // Invoca la funzione qui e stampa il risultato in console
-console.log(greetUser(userName));
-// alert(greetUser(userName));
+// console.log("Saluto l'utente di default:", greetUser());
+console.log(`Saluto l'utente di default: 
+${greetUser()}
+`);
+console.log(`Saluto l'utente che mi è stato passato dalla costante userName: 
+${greetUser(userName)}
+`);
 
 
 //Risultato atteso se si passa 'Mario': // ciao Mario
