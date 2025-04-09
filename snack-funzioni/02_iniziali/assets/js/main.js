@@ -31,8 +31,11 @@ const names = ["Anna", "Luca", "Marco", "Adele", "Giovanni", "Alessandra"];
  * @param {*} list default = ["Giovanni", 1999] - La lista da scorrere per ottenere i primi caratteri
  * @returns {Array<string> | Array<number>} errore = same as input - Lista di primi caratteri di ogni elemento della lista in ingresso
  */
-const findFirstChar = (list = {nome: "Giovanni", anno: 1999}) => {
 // const findFirstChar = (list = ["Giovanni", 1999]) => {
+// const findFirstChar = (list = {nome: "Giovanni", anno: 1999}) => {
+const findFirstChar = (list = ["Luca", {nome: "Giovanni", anno: 1999}]) => {
+
+    console.debug("list", list);
 
     if (list === null || typeof(list) === "undefined" || typeof(list) === "boolean" || typeof(list) === "symbol") return list;
 
@@ -42,8 +45,13 @@ const findFirstChar = (list = {nome: "Giovanni", anno: 1999}) => {
     const outputList = [];
 
     if (Array.isArray(list)) {
+        console.debug("ARRAY", list);
         for (let i = 0; i < list.length; i ++) {
             const currentElement = list[i].toString();
+            // * TODO: DEVO RICONTROLLARE QUI DENTRO (E DENTRO CASISTICA PER OGGETTO) CHE currentElement NON SIA UN ARRAY O UN OGGETTO
+            // * SE LO E DEVO RICHIAMARE LA FUNZIONE PER IL SINGOLO ELEMENTO
+            // * SICCOME STO RIPETENDO LE STESSE AZIONI E STO INIZIANDO AD INDENTARE PIU DEL DOVUTO, SERVIREBBE UN'ALTRA FUNZIONE?
+            console.debug("currentElement", currentElement);
             outputList.push(currentElement[0]);
             // console.debug(parseInt(outputList[outputList.length - 1]))
             if (!isNaN(parseInt(outputList[outputList.length - 1]))) {
