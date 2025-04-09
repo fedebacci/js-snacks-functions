@@ -28,11 +28,11 @@ const names = ["Anna", "Luca", "Marco", "Adele", "Giovanni", "Alessandra"];
 // * TODO: Includere anche oggetti (restituire prime lettere delle chiavi di ogni proprieta associate a prime lettere del valore delle stesse)
 /**
  * Funzione per trovare il primo carattere di un input o di una lista di input
- * @param {Array | string | number} list default = ["Alice", 1999] - La lista da scorrere per ottenere i primi caratteri
- * @returns {Array} errore = [] - Lista di primi caratteri di ogni elemento della lista in ingresso
+ * @param {*} list default = ["Giovanni", 1999] - La lista da scorrere per ottenere i primi caratteri
+ * @returns {Array<string> | Array<number>} errore = same as input - Lista di primi caratteri di ogni elemento della lista in ingresso
  */
-// const findFirstChar = (list = {nome: "alice", anno: 1999}) => {
-const findFirstChar = (list = ["Alice", 1999]) => {
+const findFirstChar = (list = {nome: "Giovanni", anno: 1999}) => {
+// const findFirstChar = (list = ["Giovanni", 1999]) => {
 
     if (list === null || typeof(list) === "undefined" || typeof(list) === "boolean" || typeof(list) === "symbol") return list;
 
@@ -51,7 +51,18 @@ const findFirstChar = (list = ["Alice", 1999]) => {
             };
         };
     } else {
-        console.log("OGGETTO");
+        // console.debug("OGGETTO", list);
+        const objProperties = Object.entries(list);
+        // console.debug("objProperties", objProperties);
+        const propList = [];
+        objProperties.forEach((arrProp) => {
+            arrProp.forEach((prop) => {
+                // console.debug("Prop", prop);
+                propList.push(prop);
+            })
+        });
+        // console.debug("propList", propList);
+        return findFirstChar(propList);
     }
 
 
