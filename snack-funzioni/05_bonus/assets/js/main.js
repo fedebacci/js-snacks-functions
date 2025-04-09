@@ -18,22 +18,31 @@ const userName = 'Mario';
  */
 const greetUser = (name = "nuovo utente") => {
     const currentHour = new Date().getHours();
+
     // * DEBUG
     // const currentHour = 3;
     // const currentHour = 16;
+    // const currentHour = 19;
     // console.debug(currentHour);
     // console.debug("13 <= currentHour && currentHour < 17", 13 <= currentHour && currentHour < 17);
     // console.debug("17 <= currentHour && currentHour <= 23", 17 <= currentHour && currentHour <= 23);
 
-    let greetingsMessage = `Buongiorno ${name}`;
-    if (13 <= currentHour && currentHour < 17) {
-        greetingsMessage = `Buon pomeriggio ${name}`;
-    } else if (17 <= currentHour && currentHour <= 23) {
-        greetingsMessage = `Buonasera ${name}`;
-    }
+    // * CORREZIONE SOTTO. LA META DELLE CONDIZIONI NON SERVONO SE PARTO DA BUONASERA E CONTROLLO SOLO I VALORI MINORI
+    // let greetingsMessage = `Buongiorno ${name}`;
+    // if (13 <= currentHour && currentHour < 17) {
+    //     greetingsMessage = `Buon pomeriggio ${name}`;
+    // } else if (17 <= currentHour && currentHour <= 23) {
+    //     greetingsMessage = `Buonasera ${name}`;
+    // };
+    // return greetingsMessage;
     
-
-    return greetingsMessage;
+    if (currentHour <= 13) {
+        return `Buongiorno ${name}`;
+    };
+    if (currentHour <= 17) {
+        return `Buon pomeriggio ${name}`;
+    };
+    return `Buonasera ${name}`;
 };
 
 

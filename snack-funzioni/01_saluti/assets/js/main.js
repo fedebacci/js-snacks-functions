@@ -7,7 +7,7 @@ const userName = 'Mario';
 /**
  * Funzione per salutare un utente
  * @param {string} name default = Giovanni - Il nome dell'utente da salutare
- * @returns Messaggio di saluto da stampare in console o mostrare come alert
+ * @returns {string} Messaggio di saluto da stampare in console o mostrare come alert
  */
 const greetUser = (name = "Giovanni") => `Ciao ${name}`;
 

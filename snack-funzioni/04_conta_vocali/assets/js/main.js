@@ -77,11 +77,13 @@ console.log("toUCVowels('Altra frase da testare')", toUCVowels('Altra frase da t
  * @returns {Array<string>} Array di vocali contenute nella stringa
 */
 function extractVowels(phrase = 'Ciao a tutti') {
-    phrase = phrase.toLowerCase();
+    // phrase = phrase.toLowerCase();
     let extractedVowels = [];
+    
     for (let i = 0; i < phrase.length; i ++) {
         const currentLetter = phrase[i];
-        currentLetter === "a" || currentLetter === "e" || currentLetter === "i" || currentLetter === "o" || currentLetter === "u" ? extractedVowels.push(currentLetter) : extractedVowels;
+        const currentLCLetter = currentLetter.toLowerCase();
+        currentLCLetter === "a" || currentLCLetter === "e" || currentLCLetter === "i" || currentLCLetter === "o" || currentLCLetter === "u" ? extractedVowels.push(currentLetter) : extractedVowels;
     }
 
     return extractedVowels;

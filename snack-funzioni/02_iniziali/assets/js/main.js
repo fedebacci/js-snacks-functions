@@ -24,18 +24,19 @@ const names = ["Anna", "Luca", "Marco", "Adele", "Giovanni", "Alessandra"];
 
 
 
-// * QUESTA VERSIONE ACCETTA UN ARRAY CHE COMPRENDE ANCHE NUMERI, OPPURE UNA STRINGA O UN NUMERO, E RESTITUISCE UN ARRAY DI PRIMI CARATTERI MANTENENDO LO STESSO TIPO
-// * TODO: Includere anche oggetti (restituire prime lettere delle chiavi di ogni proprieta associate a prime lettere del valore delle stesse)
+// * QUESTA VERSIONE ACCETTA UN ARRAY CHE COMPRENDE ANCHE NUMERI, UN OGGETTO, UNA STRINGA O UN NUMERO, E RESTITUISCE UN ARRAY DI PRIMI CARATTERI MANTENENDO LO STESSO TIPO
+// * TODO: CAPIRE SE PIU APPROPRIATO, PER ACCETTARE OGGETTI ECC., TRASFORMARE SEMPRE L'INPUT IN UN ARRAY PRIMA DI ESEGUIRE QUALSIASI COSA
 /**
  * Funzione per trovare il primo carattere di un input o di una lista di input
  * @param {*} list default = ["Giovanni", 1999] - La lista da scorrere per ottenere i primi caratteri
  * @returns {Array<string> | Array<number>} errore = same as input - Lista di primi caratteri di ogni elemento della lista in ingresso
  */
 // const findFirstChar = (list = ["Giovanni", 1999]) => {
-// const findFirstChar = (list = {nome: "Giovanni", anno: 1999}) => {
-const findFirstChar = (list = ["Luca", {nome: "Giovanni", anno: 1999}]) => {
+const findFirstChar = (list = {nome: "Giovanni", anno: 1999}) => {
+// * TODO: FARE IN MODO CHE ACCETTI ANCHE QUANTO SOTTO
+// const findFirstChar = (list = ["Luca", {nome: "Giovanni", anno: 1999}]) => {
 
-    console.debug("list", list);
+    // console.debug("list", list);
 
     if (list === null || typeof(list) === "undefined" || typeof(list) === "boolean" || typeof(list) === "symbol") return list;
 
@@ -45,19 +46,41 @@ const findFirstChar = (list = ["Luca", {nome: "Giovanni", anno: 1999}]) => {
     const outputList = [];
 
     if (Array.isArray(list)) {
-        console.debug("ARRAY", list);
-        for (let i = 0; i < list.length; i ++) {
-            const currentElement = list[i].toString();
-            // * TODO: DEVO RICONTROLLARE QUI DENTRO (E DENTRO CASISTICA PER OGGETTO) CHE currentElement NON SIA UN ARRAY O UN OGGETTO
-            // * SE LO E DEVO RICHIAMARE LA FUNZIONE PER IL SINGOLO ELEMENTO
-            // * SICCOME STO RIPETENDO LE STESSE AZIONI E STO INIZIANDO AD INDENTARE PIU DEL DOVUTO, SERVIREBBE UN'ALTRA FUNZIONE?
-            console.debug("currentElement", currentElement);
-            outputList.push(currentElement[0]);
-            // console.debug(parseInt(outputList[outputList.length - 1]))
-            if (!isNaN(parseInt(outputList[outputList.length - 1]))) {
-                outputList[outputList.length - 1] = parseInt(outputList[outputList.length - 1]);
-            };
+        // console.debug("ARRAY", list);
+
+        // * UTILIZZATO SOTTO CICLO FOR OF (PERCHÈ NON CI SERVE L'INDICE)
+        // for (let i = 0; i < list.length; i ++) {
+        //     const currentElement = list[i].toString();
+        //     // * TODO: DEVO RICONTROLLARE QUI DENTRO (E DENTRO CASISTICA PER OGGETTO) CHE currentElement NON SIA UN ARRAY O UN OGGETTO
+        //     // * SE LO E DEVO RICHIAMARE LA FUNZIONE PER IL SINGOLO ELEMENTO
+        //     // * SICCOME STO RIPETENDO LE STESSE AZIONI E STO INIZIANDO AD INDENTARE PIU DEL DOVUTO, SERVIREBBE UN'ALTRA FUNZIONE?
+        //     // console.debug("currentElement", currentElement);
+
+        //     // * NB: HA PIU SENSO SVOLGERE IL CONENUTO DELL'IF PRIMA DEL PUSH!
+        //     // outputList.push(currentElement[0]);
+        //     // // console.debug(parseInt(outputList[outputList.length - 1]))
+        //     // if (!isNaN(parseInt(outputList[outputList.length - 1]))) {
+        //     //     outputList[outputList.length - 1] = parseInt(outputList[outputList.length - 1]);
+        //     // };
+
+
+        //     // if (!isNaN(parseInt(currentElement[0]))) {
+        //     //     outputList.push(parseInt(currentElement[0]))
+        //     // } else {
+        //     //     outputList.push(currentElement[0])
+        //     // }
+        //     !isNaN(parseInt(currentElement[0])) ? outputList.push(parseInt(currentElement[0])) : outputList.push(currentElement[0]);
+        // };
+
+        // * TODO: DEVO RICONTROLLARE QUI DENTRO (E DENTRO CASISTICA PER OGGETTO) CHE currentElement NON SIA UN ARRAY O UN OGGETTO
+        // * SE LO E DEVO RICHIAMARE LA FUNZIONE PER IL SINGOLO ELEMENTO
+        // * SICCOME STO RIPETENDO LE STESSE AZIONI E STO INIZIANDO AD INDENTARE PIU DEL DOVUTO, SERVIREBBE UN'ALTRA FUNZIONE?
+        for (const currentElement of list) {
+            // console.debug("currentElement", currentElement);
+            const elementString = currentElement.toString()
+            !isNaN(parseInt(elementString[0])) ? outputList.push(parseInt(elementString[0])) : outputList.push(elementString[0]);
         };
+
     } else {
         // console.debug("OGGETTO", list);
         const objProperties = Object.entries(list);
